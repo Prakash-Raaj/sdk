@@ -1,9 +1,12 @@
 import Parse from 'parse';
 
-Parse.initialize('app');
-Parse.serverURL = 'http://localhost:1337/parse';
+export const initSdk = (appId: string, serverUrl: string) => {
+  Parse.initialize(appId);
+  Parse.serverURL = serverUrl;
+  return Parse;
+};
 
-export const parseData = async () => {
+export const getParseData = async () => {
   const GameScore = Parse.Object.extend('GameScore');
 
   const query = new Parse.Query(GameScore);
